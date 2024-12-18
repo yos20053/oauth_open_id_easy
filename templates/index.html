@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-box">
+            <h1>Cyber Secure Login</h1>
+            <p class="subtext">Authenticate securely to access your account</p>
+            <form action="/login" method="POST">
+                <div class="input-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" placeholder="Enter your username" required>
+                </div>
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                </div>
+                <button type="submit" class="login-button">Login</button>
+                <div class="extra-links">
+                    <a href="/forgot-password">Forgot Password?</a>
+                    <a href="/register">Sign Up</a>
+                </div>
+				Login with Google <a href='/login'>Login</a>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
