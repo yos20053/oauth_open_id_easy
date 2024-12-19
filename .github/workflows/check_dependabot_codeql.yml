@@ -1,0 +1,34 @@
+name: Validate Dependabot and CodeQL
+
+on:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
+
+jobs:
+  check-security-tools:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout the code
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      # Step 2: Setup Python (for the script)
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      # Step 3: Install Dependencies
+      - name: Install Dependencies
+        run: pip install requests
+
+      # Step 4: Validate Dependabot and CodeQL
+      - name: Run Validation Script
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO_NAME: ${{ github.repository }}
+        run: python .github/scripts/validate_security_tools.py
