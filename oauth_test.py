@@ -13,6 +13,7 @@ app.secret_key = "your_secret_key"  # Use a strong secret key for session manage
 IDP_AUTH_ENDPOINT = "https://accounts.google.com/o/oauth2/v2/auth"
 IDP_TOKEN_ENDPOINT = "https://oauth2.googleapis.com/token"
 IDP_USERINFO_ENDPOINT = "https://openidconnect.googleapis.com/v1/userinfo"
+#Never store your credentials hardcoded and inject them in the runtime or get them from secret managers during runtime
 CLIENT_ID = "GRAB_FROM_GOOGLE_ACCOUNT_IN_GCP"
 CLIENT_SECRET = "GRAB_FROM_GOOGLE_ACCOUNT_IN_GCP"
 REDIRECT_URI = "http://localhost:5000/callback"  # Redirect URI registered in your IdP
@@ -30,7 +31,7 @@ def login():
         f"client_id={CLIENT_ID}&"
         f"redirect_uri={REDIRECT_URI}&"
         f"scope={SCOPES}&"
-        f"state=xyz123"
+        f"state=xyz123" 
     )
     return redirect(auth_url)
 
