@@ -109,5 +109,8 @@ def fetch_user_info(access_token):
     response = requests.get(IDP_USERINFO_ENDPOINT, headers=headers)
     return response.json()
 
+import os
+
 if __name__ == "__main__":
-    app.run(debug=True)
+    debug_mode = os.getenv("FLASK_DEBUG", "false").lower() == "true"
+    app.run(debug=debug_mode)
